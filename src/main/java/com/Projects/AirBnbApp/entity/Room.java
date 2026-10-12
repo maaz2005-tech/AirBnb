@@ -1,6 +1,7 @@
 package com.Projects.AirBnbApp.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Room {
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="hotel_id",nullable = false)
+    @JsonIgnore
     private Hotel hotel;
     @Column(nullable = false)
     private String type;
