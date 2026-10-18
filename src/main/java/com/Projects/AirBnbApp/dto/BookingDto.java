@@ -25,8 +25,8 @@ public class BookingDto {
     private Integer roomsCount;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private BookingStatus bookingStatus;
     private Set<GuestDto> guests;
 }
