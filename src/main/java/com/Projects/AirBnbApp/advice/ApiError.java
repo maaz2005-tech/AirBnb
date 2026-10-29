@@ -1,3 +1,4 @@
+
 package com.Projects.AirBnbApp.advice;
 
 import lombok.Builder;
@@ -10,18 +11,11 @@ import java.util.List;
 @Data
 @Builder
 public class ApiError {
-//    private LocalDateTime timestamp;
+
+    @Builder.Default
+    private LocalDateTime timestamp = LocalDateTime.now();
+
     private String message;
     private HttpStatus statusCode;
     private List<String> subErrors;
-
-//    public ApiError() {
-//        this.timestamp = LocalDateTime.now();
-//    }
-
-//    public ApiError(String error, HttpStatus statusCode) {
-//        this();
-//        this.error = error;
-//        this.statusCode = statusCode;
-//    }
 }
