@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.Projects.AirBnbApp.util.AppUtils.getCurrUser;
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
@@ -121,6 +122,14 @@ public class HotelServiceImpl implements HotelService{
         hotel.setId(id);
         hotel=hotelRepository.save(hotel);
         return modelMapper.map(hotel,HotelDto.class);
+    }
+    @Override
+    public List<HotelDto> getAllHotels() {
+        User user=getCurrUser();
+        log.info("Getting all hotels for the admin user with Id: {}",user.getId());
+        return hotelRepository.findAllByOwner(user).stream()
+                .map((hotel)->modelMapper.map(hotel,HotelDto.class))
+                .collect(Collectors.toList());
     }
     //
 }

@@ -36,7 +36,7 @@ public class Hotel {
     @Column(nullable = false)
     private Boolean active;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
     private User owner;
     @OneToMany(mappedBy = "hotel",fetch = FetchType.LAZY)
